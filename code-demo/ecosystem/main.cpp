@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <cassert>
+
+
 
 using std::vector;
 
@@ -136,7 +139,10 @@ public:
 
 	}
 	void hunt(Plant* p) {
-		//plants don't hunt
+		assert(false); //plants don't hunt
+
+		//if you want to include message in error output:
+		assert(false && "plants don't hunt");
 	}
 
 	DayResult daily() {
@@ -172,7 +178,9 @@ private:
 	const int growAge = 4;
 	const int breedPeriod = 3;
 	const int bornCount = 5;
+	const int maxHunger = 3;
 	static int maxID;
+
 public:
 	Rabbit() {
 		age = 0;
@@ -183,7 +191,6 @@ public:
 
 	}
 	void hunt(Plant* p) {
-
 		if (p) {
 			std::cout << "Rabbit ";
 			this->print();
@@ -205,7 +212,7 @@ public:
 			return result;
 		}
 		if (age > growAge) {
-			if (hungry_days > 3) {
+			if (hungry_days > maxHunger) {
 				// die of hunger
 				print();
 				std::cout << " died of hunger" << std::endl;
@@ -241,7 +248,10 @@ private:
 	const int growAge = 7;
 	const int breedPeriod = 5;
 	const int bornCount = 2;
+	const int maxHunger = 5;
 	static int maxID;
+
+
 public:
 	Wolf() {
 		age = 0;
@@ -274,7 +284,7 @@ public:
 			return result;
 		}
 		if (age > growAge) {
-			if (hungry_days > 3) {
+			if (hungry_days > maxHunger) {
 				// die of hunger
 				print();
 				std::cout << " died of hunger" << std::endl;
