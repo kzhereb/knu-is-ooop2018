@@ -21,6 +21,8 @@ struct DayResult {
 template<typename T> class HuntSource {
 public:
 	virtual T* huntRandom()=0;
+protected:
+	virtual ~HuntSource() {}
 };
 
 template<typename T, typename Prey> class Population: public HuntSource<T> {
@@ -38,6 +40,15 @@ public:
 		adult_count = 0;
 		preyPopulation = prey;
 	}
+	virtual ~Population() {
+		for(T* child: children) {
+			delete child;
+		}
+		for(T* adult: adults) {
+			delete adult;
+		}
+	}
+
 	void born(int count) {
 		std::cout << "Born " << count << std::endl;
 		for (int i = 0; i < count; i++) {
