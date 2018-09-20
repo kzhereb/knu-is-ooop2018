@@ -136,11 +136,24 @@ public:
 	DayResult daily() {
 		DayResult result;
 		age++;
+		if (checkGrow(result)) {
+			return result;
+		}
+		checkBreed(result);
+		return result;
+	}
+
+private:
+	bool checkGrow(DayResult& result) {
 		if (age == growAge) {
 			result.grow = true;
 			waitBreed = breedPeriod;
-			return result;
+			return true;
 		}
+		return false;
+	}
+
+	void checkBreed(DayResult& result) {
 		if (age > growAge) {
 			waitBreed--;
 			if (waitBreed == 0) {
@@ -148,7 +161,6 @@ public:
 				result.born = bornCount + rand() % bornCount;
 			}
 		}
-		return result;
 	}
 };
 
