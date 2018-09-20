@@ -133,7 +133,7 @@ protected:
 		waitBreed = breedPeriod;
 	}
 
-	void checkBreed(DayResult& result) {
+	virtual void checkBreed(DayResult& result) {
 		if (age > growAge) {
 			waitBreed--;
 			if (waitBreed == 0) {
@@ -175,7 +175,7 @@ protected:
 		hungry_days = 0;
 	}
 
-	void checkBreed(DayResult& result) {
+	virtual void checkBreed(DayResult& result) {
 		if (hungry_days > 0) {
 			// too hungry to breed
 			return;
