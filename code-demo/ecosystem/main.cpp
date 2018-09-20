@@ -5,8 +5,6 @@
 #include <ctime>
 #include <cassert>
 
-
-
 using std::vector;
 
 struct DayResult {
@@ -121,19 +119,89 @@ public:
 	}
 };
 
-class Plant {
-private:
+class Organism {
+protected:
 	int id;
 	int age;
 	int waitBreed;
-	const int growAge = 5;
-	const int breedPeriod = 4;
-	const int bornCount = 7;
-	static int maxID;
-public:
-	Plant() {
+	const int growAge;
+	const int breedPeriod;
+	const int bornCount;
+	Organism(int growAge, int breedPeriod, int bornCount) :
+			growAge(growAge), breedPeriod(breedPeriod), bornCount(bornCount) {
 		age = 0;
 		waitBreed = breedPeriod;
+	}
+public:
+	DayResult daily() {
+		DayResult result;
+		age++;
+		if (checkGrow(result)) {
+			return result;
+		}
+		checkBreed(result);
+		return result;
+	}
+
+private:
+	bool checkGrow(DayResult& result) {
+		if (age == growAge) {
+			result.grow = true;
+			waitBreed = breedPeriod;
+			return true;
+		}
+		return false;
+	}
+
+	void checkBreed(DayResult& result) {
+		if (age > growAge) {
+			waitBreed--;
+			if (waitBreed == 0) {
+				waitBreed = breedPeriod;
+				result.born = bornCount + rand() % bornCount;
+			}
+		}
+	}
+};
+
+class Animal: public Organism {
+protected:
+	int hungry_days;
+	const int maxHunger;
+	Animal(int growAge, int breedPeriod, int bornCount, int maxHunger) :
+			Organism(growAge, breedPeriod, bornCount), maxHunger(maxHunger) {
+		hungry_days = 0;
+	}
+public:
+	DayResult daily() {
+		DayResult result;
+		Organism::daily();
+		if (checkHunger(result)) {return result;}
+		return result;
+	}
+
+private:
+	bool checkHunger(DayResult& result) {
+		if (age > growAge) {
+			if (hungry_days > maxHunger) {
+				// die of hunger
+				//print();
+				std::cout << " died of hunger" << std::endl;
+				result.die = true;
+				return true;
+			}
+		}
+		return false;
+	}
+};
+
+class Plant: public Organism {
+
+	static int maxID;
+public:
+	Plant() :
+			Organism(5, 4, 7) {
+
 		maxID++;
 		id = maxID;
 
@@ -145,47 +213,20 @@ public:
 		assert(false && "plants don't hunt");
 	}
 
-	DayResult daily() {
-		DayResult result;
-		age++;
-		if (age == growAge) {
-			result.grow = true;
-			waitBreed = breedPeriod;
-			return result;
-		}
-		if (age > growAge) {
-			waitBreed--;
-			if (waitBreed == 0) {
-				waitBreed = breedPeriod;
-				result.born = bornCount + rand() % bornCount;
-			}
-		}
-		return result;
-	}
-
 	void print() {
 		std::cout << "Plant id=" << id << ",age=" << age << std::endl;
 	}
 };
 int Plant::maxID = 0;
 
-class Rabbit {
+class Rabbit: public Animal {
 private:
-	int id;
-	int age;
-	int hungry_days;
-	int waitBreed;
-	const int growAge = 4;
-	const int breedPeriod = 3;
-	const int bornCount = 5;
-	const int maxHunger = 3;
+
 	static int maxID;
 
 public:
-	Rabbit() {
-		age = 0;
-		hungry_days = 0;
-		waitBreed = breedPeriod;
+	Rabbit():Animal(4,3,5,3) {
+
 		maxID++;
 		id = maxID;
 
@@ -250,7 +291,6 @@ private:
 	const int bornCount = 2;
 	const int maxHunger = 5;
 	static int maxID;
-
 
 public:
 	Wolf() {
@@ -318,7 +358,7 @@ private:
 	Population<Wolf, Rabbit> wolves;
 public:
 	Environment() :
-			plants(30), rabbits(10, &plants), wolves(10,&rabbits) {
+			plants(30), rabbits(10, &plants), wolves(10, &rabbits) {
 		plants.born(5);
 		rabbits.born(5);
 		wolves.born(2);
