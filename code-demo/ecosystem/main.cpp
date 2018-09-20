@@ -132,6 +132,24 @@ protected:
 		age = 0;
 		waitBreed = breedPeriod;
 	}
+public:
+	DayResult daily() {
+		DayResult result;
+		age++;
+		if (age == growAge) {
+			result.grow = true;
+			waitBreed = breedPeriod;
+			return result;
+		}
+		if (age > growAge) {
+			waitBreed--;
+			if (waitBreed == 0) {
+				waitBreed = breedPeriod;
+				result.born = bornCount + rand() % bornCount;
+			}
+		}
+		return result;
+	}
 };
 
 class Plant: public Organism {
@@ -150,23 +168,7 @@ public:
 		assert(false && "plants don't hunt");
 	}
 
-	DayResult daily() {
-		DayResult result;
-		age++;
-		if (age == growAge) {
-			result.grow = true;
-			waitBreed = breedPeriod;
-			return result;
-		}
-		if (age > growAge) {
-			waitBreed--;
-			if (waitBreed == 0) {
-				waitBreed = breedPeriod;
-				result.born = bornCount + rand() % bornCount;
-			}
-		}
-		return result;
-	}
+
 
 	void print() {
 		std::cout << "Plant id=" << id << ",age=" << age << std::endl;
