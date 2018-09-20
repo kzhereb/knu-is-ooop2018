@@ -142,6 +142,7 @@ protected:
 			}
 		}
 	}
+	virtual ~Organism() {}
 public:
 	DayResult daily() {
 		DayResult result;
@@ -162,6 +163,8 @@ private:
 		}
 		return false;
 	}
+
+
 
 
 };
