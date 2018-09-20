@@ -121,14 +121,20 @@ public:
 	}
 };
 
-class Plant {
-private:
+
+class Organism {
+protected:
 	int id;
 	int age;
 	int waitBreed;
 	const int growAge = 5;
 	const int breedPeriod = 4;
 	const int bornCount = 7;
+};
+
+
+class Plant: public Organism {
+
 	static int maxID;
 public:
 	Plant() {
