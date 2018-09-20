@@ -5,8 +5,6 @@
 #include <ctime>
 #include <cassert>
 
-
-
 using std::vector;
 
 struct DayResult {
@@ -121,25 +119,26 @@ public:
 	}
 };
 
-
 class Organism {
 protected:
 	int id;
 	int age;
 	int waitBreed;
-	const int growAge = 5;
-	const int breedPeriod = 4;
-	const int bornCount = 7;
+	const int growAge;
+	const int breedPeriod;
+	const int bornCount;
+	Organism(int growAge, int breedPeriod, int bornCount) :
+			growAge(growAge), breedPeriod(breedPeriod), bornCount(bornCount) {
+		age = 0;
+		waitBreed = breedPeriod;
+	}
 };
-
 
 class Plant: public Organism {
 
 	static int maxID;
 public:
-	Plant() {
-		age = 0;
-		waitBreed = breedPeriod;
+	Plant(): Organism(5,4,7) {
 		maxID++;
 		id = maxID;
 
@@ -257,7 +256,6 @@ private:
 	const int maxHunger = 5;
 	static int maxID;
 
-
 public:
 	Wolf() {
 		age = 0;
@@ -324,7 +322,7 @@ private:
 	Population<Wolf, Rabbit> wolves;
 public:
 	Environment() :
-			plants(30), rabbits(10, &plants), wolves(10,&rabbits) {
+			plants(30), rabbits(10, &plants), wolves(10, &rabbits) {
 		plants.born(5);
 		rabbits.born(5);
 		wolves.born(2);
