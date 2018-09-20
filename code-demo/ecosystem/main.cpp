@@ -152,11 +152,23 @@ public:
 	}
 };
 
+class Animal: public Organism {
+protected:
+	int hungry_days;
+	const int maxHunger;
+	Animal(int growAge, int breedPeriod, int bornCount, int maxHunger) :
+			Organism(growAge, breedPeriod, bornCount), maxHunger(maxHunger) {
+		hungry_days = 0;
+	}
+
+};
+
 class Plant: public Organism {
 
 	static int maxID;
 public:
-	Plant(): Organism(5,4,7) {
+	Plant() :
+			Organism(5, 4, 7) {
 		maxID++;
 		id = maxID;
 
@@ -168,31 +180,20 @@ public:
 		assert(false && "plants don't hunt");
 	}
 
-
-
 	void print() {
 		std::cout << "Plant id=" << id << ",age=" << age << std::endl;
 	}
 };
 int Plant::maxID = 0;
 
-class Rabbit {
+class Rabbit: public Animal {
 private:
-	int id;
-	int age;
-	int hungry_days;
-	int waitBreed;
-	const int growAge = 4;
-	const int breedPeriod = 3;
-	const int bornCount = 5;
-	const int maxHunger = 3;
+
 	static int maxID;
 
 public:
-	Rabbit() {
-		age = 0;
-		hungry_days = 0;
-		waitBreed = breedPeriod;
+	Rabbit() :
+			Animal(4, 3, 5, 3) {
 		maxID++;
 		id = maxID;
 
