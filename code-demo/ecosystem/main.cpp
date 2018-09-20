@@ -265,23 +265,12 @@ public:
 };
 int Rabbit::maxID = 0;
 
-class Wolf {
+class Wolf: public Animal {
 private:
-	int id;
-	int age;
-	int hungry_days;
-	int waitBreed;
-	const int growAge = 7;
-	const int breedPeriod = 5;
-	const int bornCount = 2;
-	const int maxHunger = 5;
 	static int maxID;
 
 public:
-	Wolf() {
-		age = 0;
-		hungry_days = 0;
-		waitBreed = breedPeriod;
+	Wolf(): Animal(7,5,2,5) {
 		maxID++;
 		id = maxID;
 
@@ -298,35 +287,6 @@ public:
 		} else {
 			hungry_days++;
 		}
-	}
-
-	DayResult daily() {
-		DayResult result;
-		age++;
-		if (age == growAge) {
-			result.grow = true;
-			waitBreed = breedPeriod;
-			return result;
-		}
-		if (age > growAge) {
-			if (hungry_days > maxHunger) {
-				// die of hunger
-				print();
-				std::cout << " died of hunger" << std::endl;
-				result.die = true;
-				return result;
-			}
-			if (waitBreed == 0) {
-				if (hungry_days == 0) {
-					waitBreed = breedPeriod;
-					result.born = bornCount + rand() % bornCount;
-				}
-			} else {
-				waitBreed--;
-			}
-			return result;
-		}
-		return result;
 	}
 
 	void print() {
