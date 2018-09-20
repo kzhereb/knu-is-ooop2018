@@ -176,7 +176,7 @@ protected:
 	}
 
 	virtual void checkBreed(DayResult& result) {
-		if (hungry_days > 0) {
+		if (waitBreed == 0 && hungry_days > 0) {
 			// too hungry to breed
 			return;
 		}
