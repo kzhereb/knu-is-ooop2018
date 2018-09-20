@@ -173,6 +173,27 @@ protected:
 		hungry_days = 0;
 	}
 
+public:
+	DayResult daily() {
+		DayResult result = Organism::daily();
+
+		checkHunger(result);
+		return result;
+	}
+
+private:
+	bool checkHunger(DayResult& result) {
+		if (age > growAge) {
+			if (hungry_days > maxHunger) {
+				// die of hunger
+				//print();
+				std::cout << " died of hunger" << std::endl;
+				result.die = true;
+				return true;
+			}
+		}
+		return false;
+	}
 };
 
 class Plant: public Organism {
@@ -223,34 +244,7 @@ public:
 		}
 	}
 
-	DayResult daily() {
-		DayResult result;
-		age++;
-		if (age == growAge) {
-			result.grow = true;
-			waitBreed = breedPeriod;
-			return result;
-		}
-		if (age > growAge) {
-			if (hungry_days > maxHunger) {
-				// die of hunger
-				print();
-				std::cout << " died of hunger" << std::endl;
-				result.die = true;
-				return result;
-			}
-			if (waitBreed == 0) {
-				if (hungry_days == 0) {
-					waitBreed = breedPeriod;
-					result.born = bornCount + rand() % bornCount;
-				}
-			} else {
-				waitBreed--;
-			}
-			return result;
-		}
-		return result;
-	}
+
 
 	void print() {
 		std::cout << "Rabbit id=" << id << ",age=" << age << ", hunger="
