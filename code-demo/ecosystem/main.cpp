@@ -132,6 +132,16 @@ protected:
 		age = 0;
 		waitBreed = breedPeriod;
 	}
+
+	void checkBreed(DayResult& result) {
+		if (age > growAge) {
+			waitBreed--;
+			if (waitBreed == 0) {
+				waitBreed = breedPeriod;
+				result.born = bornCount + rand() % bornCount;
+			}
+		}
+	}
 public:
 	DayResult daily() {
 		DayResult result;
@@ -153,15 +163,7 @@ private:
 		return false;
 	}
 
-	void checkBreed(DayResult& result) {
-		if (age > growAge) {
-			waitBreed--;
-			if (waitBreed == 0) {
-				waitBreed = breedPeriod;
-				result.born = bornCount + rand() % bornCount;
-			}
-		}
-	}
+
 };
 
 class Animal: public Organism {
@@ -172,6 +174,16 @@ protected:
 			Organism(growAge, breedPeriod, bornCount), maxHunger(maxHunger) {
 		hungry_days = 0;
 	}
+
+	void checkBreed(DayResult& result) {
+		if (hungry_days > 0) {
+			// too hungry to breed
+			return;
+		}
+		Organism::checkBreed(result);
+	}
+
+
 
 public:
 	DayResult daily() {
