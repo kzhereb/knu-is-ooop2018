@@ -165,6 +165,10 @@ public:
 		return result;
 	}
 
+	void print() {
+		std::cout << "Organism id=" << id << ",age=" << age << std::endl;
+	}
+
 private:
 	bool checkGrow(DayResult& result) {
 		if (age == growAge) {
@@ -206,6 +210,10 @@ public:
 		checkHunger(result);
 		return result;
 	}
+	void print() {
+		std::cout << "Animal id=" << id << ",age=" << age << ", hunger="
+				<< hungry_days << std::endl;
+	}
 
 private:
 	bool checkHunger(DayResult& result) {
@@ -239,9 +247,7 @@ public:
 		assert(false && "plants don't hunt");
 	}
 
-	void print() {
-		std::cout << "Plant id=" << id << ",age=" << age << std::endl;
-	}
+
 };
 int Plant::maxID = 0;
 
@@ -270,12 +276,6 @@ public:
 		}
 	}
 
-
-
-	void print() {
-		std::cout << "Rabbit id=" << id << ",age=" << age << ", hunger="
-				<< hungry_days << std::endl;
-	}
 };
 int Rabbit::maxID = 0;
 
@@ -303,10 +303,6 @@ public:
 		}
 	}
 
-	void print() {
-		std::cout << "Wolf id=" << id << ",age=" << age << ", hunger="
-				<< hungry_days << std::endl;
-	}
 };
 int Wolf::maxID = 0;
 
