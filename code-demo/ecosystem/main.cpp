@@ -1,3 +1,5 @@
+#include "organism.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,16 +10,7 @@
 
 using std::vector;
 
-struct DayResult {
-	bool grow;
-	bool die;
-	int born;
-	DayResult() {
-		grow = false;
-		die = false;
-		born = 0;
-	}
-};
+
 
 template<typename T> class HuntSource {
 public:
@@ -132,74 +125,6 @@ public:
 	}
 };
 
-class Organism {
-protected:
-	int id;
-	int age;
-	int waitBreed;
-	const int growAge;
-	const int breedPeriod;
-	const int bornCount;
-	Organism(int growAge, int breedPeriod, int bornCount) :
-			growAge(growAge), breedPeriod(breedPeriod), bornCount(bornCount) {
-		age = 0;
-		waitBreed = breedPeriod;
-	}
-
-	virtual void checkBreed(DayResult& result) {
-		if (age > growAge) {
-			waitBreed--;
-			if (waitBreed == 0) {
-				waitBreed = breedPeriod;
-				result.born = bornCount + rand() % bornCount;
-			}
-		}
-	}
-
-	virtual std::string getName() {
-		return "Organism";
-	}
-	virtual std::string stringState() {
-		return "id=" + std::to_string(id) + ",age=" + std::to_string(age);
-	}
-
-
-public:
-	virtual ~Organism() {
-	}
-	DayResult daily() {
-		DayResult result;
-		age++;
-		if (checkGrow(result)) {
-			return result;
-		}
-		checkBreed(result);
-		return result;
-	}
-
-	virtual void hunt(Organism* p) {
-		assert(false); //plants don't hunt
-
-		//if you want to include message in error output:
-		assert(false && "plants don't hunt");
-	}
-
-	void print() {
-		std::cout << getName() << " " << stringState() << std::endl;
-	}
-
-private:
-	bool checkGrow(DayResult& result) {
-		if (age == growAge) {
-			result.grow = true;
-			waitBreed = breedPeriod;
-			return true;
-		}
-		return false;
-	}
-
-};
-
 class Animal: public Organism {
 protected:
 	int hungry_days;
@@ -277,7 +202,6 @@ public:
 
 	}
 
-
 };
 int Plant::maxID = 0;
 
@@ -296,7 +220,6 @@ public:
 		id = maxID;
 
 	}
-
 
 };
 int Rabbit::maxID = 0;
