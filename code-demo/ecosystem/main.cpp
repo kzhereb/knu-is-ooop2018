@@ -163,9 +163,10 @@ protected:
 		return "id=" + std::to_string(id) + ",age=" + std::to_string(age);
 	}
 
+
+public:
 	virtual ~Organism() {
 	}
-public:
 	DayResult daily() {
 		DayResult result;
 		age++;
@@ -174,6 +175,13 @@ public:
 		}
 		checkBreed(result);
 		return result;
+	}
+
+	virtual void hunt(Organism* p) {
+		assert(false); //plants don't hunt
+
+		//if you want to include message in error output:
+		assert(false && "plants don't hunt");
 	}
 
 	void print() {
@@ -225,6 +233,19 @@ public:
 		return result;
 	}
 
+	void hunt(Organism* p) {
+		if (p) {
+			//std::cout << "Rabbit ";
+			this->print();
+			std::cout << " ate ";
+			p->print();
+			hungry_days = 0;
+			delete p;
+		} else {
+			hungry_days++;
+		}
+	}
+
 private:
 	bool checkHunger(DayResult& result) {
 		if (age > growAge) {
@@ -255,12 +276,7 @@ public:
 		id = maxID;
 
 	}
-	void hunt(Plant* p) {
-		assert(false); //plants don't hunt
 
-		//if you want to include message in error output:
-		assert(false && "plants don't hunt");
-	}
 
 };
 int Plant::maxID = 0;
@@ -280,18 +296,7 @@ public:
 		id = maxID;
 
 	}
-	void hunt(Plant* p) {
-		if (p) {
-			std::cout << "Rabbit ";
-			this->print();
-			std::cout << " ate plant ";
-			p->print();
-			hungry_days = 0;
-			delete p;
-		} else {
-			hungry_days++;
-		}
-	}
+
 
 };
 int Rabbit::maxID = 0;
@@ -309,19 +314,6 @@ public:
 		maxID++;
 		id = maxID;
 
-	}
-	void hunt(Rabbit* p) {
-
-		if (p) {
-			std::cout << "Wolf ";
-			this->print();
-			std::cout << " ate rabbit ";
-			p->print();
-			hungry_days = 0;
-			delete p;
-		} else {
-			hungry_days++;
-		}
 	}
 
 };
