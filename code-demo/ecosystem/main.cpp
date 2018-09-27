@@ -230,8 +230,7 @@ private:
 		if (age > growAge) {
 			if (hungry_days > maxHunger) {
 				// die of hunger
-				//TODO: move print() to base class
-				//print();
+				print();
 				std::cout << " died of hunger" << std::endl;
 				result.die = true;
 				return true;
