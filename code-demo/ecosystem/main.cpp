@@ -156,10 +156,10 @@ protected:
 		}
 	}
 
-	std::string getName() {
+	virtual std::string getName() {
 		return "Organism";
 	}
-	std::string stringState() {
+	virtual std::string stringState() {
 		return "id=" + std::to_string(id) + ",age=" + std::to_string(age);
 	}
 
