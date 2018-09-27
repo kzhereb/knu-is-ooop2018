@@ -11,7 +11,7 @@
 #include "day_result.h"
 
 #include <vector>
-#include <algorithm>
+
 #include <iostream>
 
 using std::vector;

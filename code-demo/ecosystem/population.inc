@@ -6,6 +6,8 @@
  */
 #include "population.h"
 
+#include <algorithm>
+
 template<typename T, typename Prey> Population<T, Prey>::Population(
 		int saturation, HuntSource<Prey> * prey) {
 	saturation_count = saturation;
