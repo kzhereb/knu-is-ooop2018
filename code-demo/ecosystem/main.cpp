@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
@@ -22,7 +23,8 @@ template<typename T> class HuntSource {
 public:
 	virtual T* huntRandom()=0;
 protected:
-	virtual ~HuntSource() {}
+	virtual ~HuntSource() {
+	}
 };
 
 template<typename T, typename Prey> class Population: public HuntSource<T> {
@@ -41,10 +43,10 @@ public:
 		preyPopulation = prey;
 	}
 	virtual ~Population() {
-		for(T* child: children) {
+		for (T* child : children) {
 			delete child;
 		}
-		for(T* adult: adults) {
+		for (T* adult : adults) {
 			delete adult;
 		}
 	}
@@ -153,7 +155,16 @@ protected:
 			}
 		}
 	}
-	virtual ~Organism() {}
+
+	std::string getName() {
+		return "Organism";
+	}
+	std::string stringState() {
+		return "id=" + std::to_string(id) + ",age=" + std::to_string(age);
+	}
+
+	virtual ~Organism() {
+	}
 public:
 	DayResult daily() {
 		DayResult result;
@@ -166,7 +177,7 @@ public:
 	}
 
 	void print() {
-		std::cout << "Organism id=" << id << ",age=" << age << std::endl;
+		std::cout << getName() << " " << stringState() << std::endl;
 	}
 
 private:
@@ -178,9 +189,6 @@ private:
 		}
 		return false;
 	}
-
-
-
 
 };
 
@@ -201,7 +209,13 @@ protected:
 		Organism::checkBreed(result);
 	}
 
-
+	std::string getName() {
+		return "Animal";
+	}
+	std::string stringState() {
+		return Organism::stringState() + ", hunger="
+				+ std::to_string(hungry_days);
+	}
 
 public:
 	DayResult daily() {
@@ -209,10 +223,6 @@ public:
 
 		checkHunger(result);
 		return result;
-	}
-	void print() {
-		std::cout << "Animal id=" << id << ",age=" << age << ", hunger="
-				<< hungry_days << std::endl;
 	}
 
 private:
@@ -233,6 +243,11 @@ private:
 class Plant: public Organism {
 
 	static int maxID;
+
+protected:
+	std::string getName() {
+		return "Plant";
+	}
 public:
 	Plant() :
 			Organism(5, 4, 7) {
@@ -247,7 +262,6 @@ public:
 		assert(false && "plants don't hunt");
 	}
 
-
 };
 int Plant::maxID = 0;
 
@@ -255,7 +269,10 @@ class Rabbit: public Animal {
 private:
 
 	static int maxID;
-
+protected:
+	std::string getName() {
+		return "Rabbit";
+	}
 public:
 	Rabbit() :
 			Animal(4, 3, 5, 3) {
@@ -282,9 +299,13 @@ int Rabbit::maxID = 0;
 class Wolf: public Animal {
 private:
 	static int maxID;
-
+protected:
+	std::string getName() {
+		return "Wolf";
+	}
 public:
-	Wolf(): Animal(7,5,2,5) {
+	Wolf() :
+			Animal(7, 5, 2, 5) {
 		maxID++;
 		id = maxID;
 
