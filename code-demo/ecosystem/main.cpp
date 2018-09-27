@@ -1,13 +1,8 @@
 #include "environment.h"
 
-
-#include <iostream>
-#include <vector>
-#include <string>
-
 #include <cstdlib>
 #include <ctime>
-#include <cassert>
+
 
 
 
