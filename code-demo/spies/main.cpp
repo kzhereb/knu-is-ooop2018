@@ -15,11 +15,11 @@ using std::endl;
 void generateRandoms() {
 	srand(12345);
 	HiddenRandSpy::setSeed(12345);
-	Spy* spy = new HiddenRandSpy;
-	cout << spy << endl;
+	HiddenRandSpy spy;
+	//cout << spy << endl;
 	std::vector<int> randoms;
 	for (int i = 0; i < 10; i++) {
-		spy->report("new value");
+		spy.report("new value");
 		int val = rand();
 		randoms.push_back(val);
 		if (val % 100 == 13) {
@@ -30,7 +30,7 @@ void generateRandoms() {
 		cout << randoms[i] << " ";
 	}
 	cout << endl;
-	delete spy;
+	//delete spy;
 }
 
 int main() {
