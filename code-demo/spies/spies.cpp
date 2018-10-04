@@ -27,9 +27,11 @@ void Spy::printState() {
 TimerSpy::TimerSpy() :
 		Spy(), start(high_resolution_clock::now()) {
 	cout << "Timer ";
+	printState();
 }
 TimerSpy::~TimerSpy() {
 	cout << "Timer ";
+	printState();
 }
 
 void TimerSpy::printState() {
