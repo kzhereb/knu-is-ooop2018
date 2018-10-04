@@ -26,7 +26,7 @@ int main() {
 	}
 	cout << endl;
 
-	delete spy;
+	//delete spy;
 
 	return 0;
 }
