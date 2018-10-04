@@ -20,10 +20,11 @@ int main() {
 
 
 	std::vector<int> randoms;
-	for (int i = 0; i < 1e7; i++) {
+	for (int i = 0; i < 10; i++) {
+		spy->report("new value");
 		randoms.push_back(rand());
 	}
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 10; i++) {
 		cout << randoms[i] << " ";
 	}
 	cout << endl;

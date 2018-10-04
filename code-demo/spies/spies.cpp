@@ -20,6 +20,10 @@ Spy::~Spy() {
 	cout << "Destroyed ";
 	printState();
 }
+void Spy::report(string message) {
+	cout<<"Reporting "<<message<<"; ";
+	printState();
+}
 void Spy::printState() {
 	cout << "spy id=" << id << endl;
 }

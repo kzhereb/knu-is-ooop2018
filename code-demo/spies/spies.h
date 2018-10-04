@@ -7,7 +7,11 @@
 
 #ifndef CODE_DEMO_SPIES_SPIES_H_
 #define CODE_DEMO_SPIES_SPIES_H_
+
+#include <string>
 #include <chrono>
+
+using std::string;
 using std::chrono::high_resolution_clock;
 
 class Spy {
@@ -19,6 +23,7 @@ protected:
 public:
 	Spy();
 	virtual ~Spy();
+	void report(string message);
 };
 
 class TimerSpy: public Spy {
