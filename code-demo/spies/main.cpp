@@ -23,7 +23,11 @@ int main() {
 	std::vector<int> randoms;
 	for (int i = 0; i < 10; i++) {
 		spy->report("new value");
-		randoms.push_back(rand());
+		int val = rand();
+		randoms.push_back(val);
+		if (val%100==13) {
+			throw std::logic_error("bad luck, escaping...");
+		}
 	}
 	for (int i = 0; i < 10; i++) {
 		cout << randoms[i] << " ";
