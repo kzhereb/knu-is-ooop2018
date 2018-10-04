@@ -13,10 +13,12 @@ using std::cout;
 using std::endl;
 
 int main() {
+	srand(12345);
+
 	Spy* spy = new RandSpy;
 	cout << spy << endl;
 
-	srand(12345);
+
 	std::vector<int> randoms;
 	for (int i = 0; i < 1e7; i++) {
 		randoms.push_back(rand());
