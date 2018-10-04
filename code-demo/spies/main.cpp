@@ -14,8 +14,9 @@ using std::endl;
 
 int main() {
 	srand(12345);
+	HiddenRandSpy::setSeed(12345);
 
-	Spy* spy = new RandSpy;
+	Spy* spy = new HiddenRandSpy;
 	cout << spy << endl;
 
 
