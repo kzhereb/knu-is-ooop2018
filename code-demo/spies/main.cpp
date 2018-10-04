@@ -12,20 +12,17 @@
 using std::cout;
 using std::endl;
 
-int main() {
+void generateRandoms() {
 	srand(12345);
 	HiddenRandSpy::setSeed(12345);
-
 	Spy* spy = new HiddenRandSpy;
 	cout << spy << endl;
-
-
 	std::vector<int> randoms;
 	for (int i = 0; i < 10; i++) {
 		spy->report("new value");
 		int val = rand();
 		randoms.push_back(val);
-		if (val%100==13) {
+		if (val % 100 == 13) {
 			throw std::logic_error("bad luck, escaping...");
 		}
 	}
@@ -33,9 +30,15 @@ int main() {
 		cout << randoms[i] << " ";
 	}
 	cout << endl;
-
 	delete spy;
+}
 
+int main() {
+	try {
+		generateRandoms();
+	} catch (const std::logic_error& e) {
+		cout << "Logic error: " << e.what() << endl;
+	}
 	return 0;
 }
 
