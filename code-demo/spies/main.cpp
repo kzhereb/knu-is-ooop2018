@@ -7,19 +7,21 @@
 #include "spies.h"
 #include <iostream>
 #include <vector>
+#include <memory>
 #include <cstdlib>
 
 using std::cout;
 using std::endl;
+using std::unique_ptr;
 
 void generateRandoms() {
 	srand(12345);
 	HiddenRandSpy::setSeed(12345);
-	HiddenRandSpy spy;
-	//cout << spy << endl;
+	unique_ptr<Spy> spy = unique_ptr<Spy>(new HiddenRandSpy);
+	cout << spy.get() << endl;
 	std::vector<int> randoms;
 	for (int i = 0; i < 10; i++) {
-		spy.report("new value");
+		spy->report("new value");
 		int val = rand();
 		randoms.push_back(val);
 		if (val % 100 == 13) {
