@@ -31,4 +31,13 @@ public:
 	~TimerSpy();
 };
 
+
+class RandSpy: public Spy {
+protected:
+	void printState() override;
+public:
+	RandSpy();
+	~RandSpy();
+};
+
 #endif /* CODE_DEMO_SPIES_SPIES_H_ */

@@ -42,3 +42,19 @@ void TimerSpy::printState() {
 			<< " ms ";
 	Spy::printState();
 }
+
+RandSpy::RandSpy() :
+		Spy() {
+	cout << "Rand ";
+	printState();
+}
+
+RandSpy::~RandSpy() {
+	cout << "Rand ";
+	printState();
+}
+
+void RandSpy::printState() {
+	cout << "rand()= " << rand() << " ";
+	Spy::printState();
+}

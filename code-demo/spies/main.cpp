@@ -13,7 +13,7 @@ using std::cout;
 using std::endl;
 
 int main() {
-	Spy* spy = new TimerSpy;
+	Spy* spy = new RandSpy;
 	cout << spy << endl;
 
 	srand(12345);
@@ -26,7 +26,7 @@ int main() {
 	}
 	cout << endl;
 
-	//delete spy;
+	delete spy;
 
 	return 0;
 }
