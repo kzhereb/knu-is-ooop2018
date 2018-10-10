@@ -4,15 +4,15 @@
  *  Created on: Oct 4, 2018
  *      Author: KZ
  */
+
 #include "spies.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 
-int Spy::maxID = 0;
-
+int Spy::MaxID = 0;
 Spy::Spy() :
-		id(++maxID) {
+		id(++MaxID) {
 	cout << "Init ";
 	printState();
 }
@@ -20,14 +20,12 @@ Spy::~Spy() {
 	cout << "Destroyed ";
 	printState();
 }
-
+void Spy::report(string message) {
+	cout << "Reporting " << message << "; ";
+	printState();
+}
 void Spy::printState() {
 	cout << "spy id=" << id << endl;
-}
-
-void Spy::report(string message){
-	cout<<"Reporting "<<message<<" ";
-	printState();
 }
 
 TimerSpy::TimerSpy() :
@@ -49,7 +47,6 @@ void TimerSpy::printState() {
 	Spy::printState();
 }
 
-
 RandSpy::RandSpy() :
 		Spy() {
 	cout << "Rand ";
@@ -65,7 +62,6 @@ void RandSpy::printState() {
 	cout << "rand()= " << rand() << " ";
 	Spy::printState();
 }
-
 
 int HiddenRandSpy::seed = 1;
 HiddenRandSpy::HiddenRandSpy() :

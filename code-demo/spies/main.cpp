@@ -18,7 +18,7 @@ void generateRandoms() {
 	srand(12345);
 	HiddenRandSpy::setSeed(12345);
 	unique_ptr<Spy> spy(new HiddenRandSpy);
-	cout<<spy.get()<<endl;
+	cout << spy.get() << endl;
 	vector<int> randoms;
 	for (int i = 0; i < 10; i++) {
 		spy->report("new value");

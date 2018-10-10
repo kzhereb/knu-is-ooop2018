@@ -7,18 +7,17 @@
 
 #ifndef CODE_DEMO_SPIES_SPIES_H_
 #define CODE_DEMO_SPIES_SPIES_H_
-#include <chrono>
+
 #include <string>
+#include <chrono>
 
 using std::string;
 using std::chrono::high_resolution_clock;
 
-
-
 class Spy {
 private:
 	int id;
-	static int maxID;
+	static int MaxID;
 protected:
 	virtual void printState();
 public:
@@ -27,15 +26,14 @@ public:
 	virtual void report(string message);
 };
 
-
 class TimerSpy: public Spy {
 private:
 	high_resolution_clock::time_point start;
 protected:
-	void printState();
+	void printState() override;
 public:
 	TimerSpy();
-	virtual ~TimerSpy();
+	~TimerSpy();
 };
 
 
