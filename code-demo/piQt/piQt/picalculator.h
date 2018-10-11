@@ -17,4 +17,9 @@ public:
 };
 
 
+class IntegrateCalculator: public PiCalculator {
+public:
+    double calculate(int steps) override;
+};
+
 #endif // PICALCULATOR_H

@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    AtanCalculator calc;
+    IntegrateCalculator calc;
     qDebug()<<calc.calculate(10);
 
     QApplication a(argc, argv);
