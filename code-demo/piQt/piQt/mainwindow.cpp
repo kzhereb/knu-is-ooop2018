@@ -18,12 +18,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_rbAtan_clicked()
 {
+    int steps = ui->leSteps->text().toInt();
     AtanCalculator calc;
-    qDebug()<<"Atan"<<calc.calculate(10);
+    qDebug()<<"Atan"<<calc.calculate(steps);
 }
 
 void MainWindow::on_rbIntegrate_clicked()
 {
+    int steps = ui->leSteps->text().toInt();
     IntegrateCalculator calc;
-    qDebug()<<"Integrate"<<calc.calculate(10);
+    qDebug()<<"Integrate"<<calc.calculate(steps);
 }

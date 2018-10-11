@@ -59,6 +59,16 @@
      </property>
     </widget>
    </widget>
+   <widget class="QLineEdit" name="leSteps">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>40</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
