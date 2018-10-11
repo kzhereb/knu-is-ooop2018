@@ -20,12 +20,16 @@ void MainWindow::on_rbAtan_clicked()
 {
     int steps = ui->leSteps->text().toInt();
     AtanCalculator calc;
-    qDebug()<<"Atan"<<calc.calculate(steps);
+    double result = calc.calculate(steps);
+    qDebug()<<"Atan"<< result;
+    ui->lblResult->setText(QString("Atan: %1").arg(result));
 }
 
 void MainWindow::on_rbIntegrate_clicked()
 {
     int steps = ui->leSteps->text().toInt();
     IntegrateCalculator calc;
-    qDebug()<<"Integrate"<<calc.calculate(steps);
+    double result = calc.calculate(steps);
+    qDebug()<<"Integrate"<< result;
+    ui->lblResult->setText(QString("Integ: %1").arg(result));
 }
