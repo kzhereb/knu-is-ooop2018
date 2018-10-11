@@ -90,7 +90,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="leSteps"/>
+      <widget class="QLineEdit" name="leSteps">
+       <property name="text">
+        <string>100</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
