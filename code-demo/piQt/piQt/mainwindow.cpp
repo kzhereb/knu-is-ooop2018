@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    addCalculators();
 }
 
 MainWindow::~MainWindow()
@@ -28,10 +29,25 @@ void MainWindow::on_rbIntegrate_clicked()
     calculate("Integ");
 }
 
+void MainWindow::addCalculators()
+{
+    mapCalc["Atan"] = std::make_shared<AtanCalculator>();
+    mapCalc["Integrate"] = std::make_shared<IntegrateCalculator>();
+    foreach(const QString &key, mapCalc.keys()) {
+        ui->lswCalculators->addItem(key);
+    }
+}
+
 void MainWindow::calculate(QString name)
 {
+    calc = mapCalc[name];
     int steps = ui->leSteps->text().toInt();
     double result = calc->calculate(steps);
     qDebug()<<name<<": " << result;
     ui->lblResult->setText(QString("%1: %2").arg(name).arg(result));
+}
+
+void MainWindow::on_lswCalculators_currentTextChanged(const QString &currentText)
+{
+    calculate(currentText);
 }

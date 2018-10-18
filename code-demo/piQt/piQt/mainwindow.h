@@ -4,6 +4,7 @@
 #include "picalculator.h"
 
 #include <QMainWindow>
+#include <QHash>
 
 #include <memory>
 
@@ -26,10 +27,14 @@ private slots:
 
     void on_rbIntegrate_clicked();
 
+    void on_lswCalculators_currentTextChanged(const QString &currentText);
+
 private:
     Ui::MainWindow *ui;
     shared_ptr<PiCalculator> calc;
+    QHash<QString, shared_ptr<PiCalculator>> mapCalc;
 
+    void addCalculators();
     void calculate(QString name);
 };
 
