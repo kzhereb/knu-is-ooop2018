@@ -1,7 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "picalculator.h"
+
 #include <QMainWindow>
+
+#include <memory>
+
+using std::shared_ptr;
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +28,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    shared_ptr<PiCalculator> calc;
+
+    void calculate(QString name);
 };
 
 #endif // MAINWINDOW_H
