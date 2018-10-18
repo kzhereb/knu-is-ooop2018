@@ -5,8 +5,8 @@
 
 int main(int argc, char *argv[])
 {
-    IntegrateCalculator calc;
-    qDebug()<<calc.calculate(10);
+    MonteCarloCalculator calc;
+    qDebug()<<calc.calculate(1e5);
 
     QApplication a(argc, argv);
     MainWindow w;

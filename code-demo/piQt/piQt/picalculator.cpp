@@ -1,4 +1,5 @@
 #include "picalculator.h"
+#include <random>
 #include <cmath>
 
 PiCalculator::PiCalculator()
@@ -38,5 +39,23 @@ double IntegrateCalculator::calculate(int steps) {
     }
 
     return sum*interval*4;
+
+}
+
+
+// uses Monte-Carlo method to calculate pi/4 = Integral(0,1,sqrt(1-x^2))
+double MonteCarloCalculator::calculate(int steps) {
+    int hits=0; // number of points within given area
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<> dis(0.0, 1.0);
+
+    for (int i=0;i < steps; i++) {
+        double x = dis(gen);
+        double y = dis(gen);
+        if (x*x+y*y<1.0) {hits++;}
+    }
+
+    return 4*double(hits)/steps;
 
 }
