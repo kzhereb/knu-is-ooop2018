@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    picalculator.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    picalculator.h
 
 FORMS += \
         mainwindow.ui

@@ -15,6 +15,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_rbAtan_clicked();
+
+    void on_rbIntegrate_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
