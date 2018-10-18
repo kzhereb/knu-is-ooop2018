@@ -33,6 +33,11 @@ void MainWindow::addCalculators()
 {
     mapCalc["Atan"] = std::make_shared<AtanCalculator>();
     mapCalc["Integrate"] = std::make_shared<IntegrateCalculator>();
+    mapCalc["Monte Carlo"] = std::make_shared<MonteCarloCalculator>();
+    mapCalc["Euler 2,3"] = std::make_shared<TwoAtanCalculator>(1,2,1,1,3,1);
+    mapCalc["Machin 5,239"] = std::make_shared<TwoAtanCalculator>(1,5,4,1,239,-1);
+
+
     foreach(const QString &key, mapCalc.keys()) {
         ui->lswCalculators->addItem(key);
     }
