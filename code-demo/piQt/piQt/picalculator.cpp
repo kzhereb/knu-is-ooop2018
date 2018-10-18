@@ -1,6 +1,7 @@
 #include "picalculator.h"
 #include <random>
 #include <cmath>
+#include <ctime>
 
 PiCalculator::PiCalculator()
 {
@@ -47,7 +48,8 @@ double IntegrateCalculator::calculate(int steps) {
 double MonteCarloCalculator::calculate(int steps) {
     int hits=0; // number of points within given area
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
-    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::seed_seq seed { rd(), static_cast<unsigned int>(time(nullptr))}; // in case random_device is not implemented, fallback to time(0)
+    std::mt19937 gen(seed); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(0.0, 1.0);
 
     for (int i=0;i < steps; i++) {
