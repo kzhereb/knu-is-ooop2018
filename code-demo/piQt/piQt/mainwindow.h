@@ -36,6 +36,7 @@ private:
 
     void addCalculators();
     void calculate(QString name);
+    void addResultToTable(QString name, int steps, double result);
 };
 
 #endif // MAINWINDOW_H

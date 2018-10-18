@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QDateTime>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -50,6 +51,27 @@ void MainWindow::calculate(QString name)
     double result = calc->calculate(steps);
     qDebug()<<name<<": " << result;
     ui->lblResult->setText(QString("%1: %2").arg(name).arg(result));
+
+    addResultToTable(name, steps, result);
+}
+
+void MainWindow::addResultToTable(QString name, int steps, double result)
+{
+    QString time = QDateTime::currentDateTime().toString();
+    int rowCount = ui->tblResults->rowCount();
+    ui->tblResults->setRowCount(rowCount+1);
+
+    QTableWidgetItem* itemDT = new QTableWidgetItem(time);
+    ui->tblResults->setItem(rowCount,0,itemDT);
+
+    QTableWidgetItem* itemName = new QTableWidgetItem(name);
+    ui->tblResults->setItem(rowCount,1,itemName);
+
+    QTableWidgetItem* itemSteps = new QTableWidgetItem(QString::number(steps));
+    ui->tblResults->setItem(rowCount,2,itemSteps);
+
+    QTableWidgetItem* itemResult = new QTableWidgetItem(QString::number(result));
+    ui->tblResults->setItem(rowCount,3,itemResult);
 }
 
 void MainWindow::on_lswCalculators_currentTextChanged(const QString &currentText)
