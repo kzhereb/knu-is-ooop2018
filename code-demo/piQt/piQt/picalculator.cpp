@@ -61,3 +61,23 @@ double MonteCarloCalculator::calculate(int steps) {
     return 4*double(hits)/steps;
 
 }
+
+
+TwoAtanCalculator::TwoAtanCalculator(int a1,int b1,int c1, int a2,int b2,int c2):
+    PiCalculator(), a1(a1), b1(b1), c1(c1),a2(a2), b2(b2), c2(c2) {
+}
+// uses Taylor series for atan: atan(x) = x - x^3/3 + x^5/5 - ...
+double TwoAtanCalculator::atan(double x, int steps) {
+    double sum = 0.0;
+    double pow_x = x;
+    for (int i=0; i<steps;i++) {
+            sum +=pow_x/(2*i+1);
+            pow_x = -pow_x*x*x;
+        }
+    return sum;
+}
+// uses https://en.wikipedia.org/wiki/Machin-like_formula
+double TwoAtanCalculator::calculate(int steps) {
+    double pi4 = c1*atan(double(a1)/b1, steps) + c2*atan(double(a2)/b2, steps);
+    return 4*pi4;
+}
