@@ -60,7 +60,7 @@ void MainWindow::calculate(QString name)
 
 void MainWindow::addResultToTable(QString name, int steps, double result)
 {
-    QString time = QDateTime::currentDateTime().toString();
+    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     int rowCount = ui->tblResults->rowCount();
     ui->tblResults->setRowCount(rowCount+1);
 
