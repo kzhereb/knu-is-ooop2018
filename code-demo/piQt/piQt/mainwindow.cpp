@@ -60,6 +60,8 @@ void MainWindow::calculate(QString name)
 
 void MainWindow::addResultToTable(QString name, int steps, double result)
 {
+    ui->tblResults->setSortingEnabled(false);
+
     QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     int rowCount = ui->tblResults->rowCount();
     ui->tblResults->setRowCount(rowCount+1);
@@ -75,6 +77,8 @@ void MainWindow::addResultToTable(QString name, int steps, double result)
 
     QTableWidgetItem* itemResult = new QTableWidgetItem(QString::number(result));
     ui->tblResults->setItem(rowCount,3,itemResult);
+
+    ui->tblResults->setSortingEnabled(true);
 }
 
 void MainWindow::on_lswCalculators_currentTextChanged(const QString &currentText)
