@@ -33,7 +33,7 @@
       <x>260</x>
       <y>10</y>
       <width>135</width>
-      <height>48</height>
+      <height>49</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -84,6 +84,9 @@
       <width>491</width>
       <height>261</height>
      </rect>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
     </property>
     <property name="columnCount">
      <number>4</number>
