@@ -14,88 +14,64 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="lblResult">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>80</y>
-      <width>271</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Result</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>10</y>
-      <width>135</width>
-      <height>49</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="lblSteps">
-       <property name="text">
-        <string>Steps</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="leSteps">
-       <property name="text">
-        <string>100</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QListWidget" name="lswCalculators">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>231</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCalculators">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>59</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Calculators</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tblResults">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>110</y>
-      <width>491</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <property name="columnCount">
-     <number>4</number>
-    </property>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout" columnstretch="0,1">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblCalculators">
+        <property name="text">
+         <string>Calculators</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" rowspan="2">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="lblSteps">
+          <property name="text">
+           <string>Steps</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leSteps">
+          <property name="text">
+           <string>100</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" rowspan="3">
+       <widget class="QListWidget" name="lswCalculators"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="lblResult">
+        <property name="text">
+         <string>Result</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QTableWidget" name="tblResults">
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="columnCount">
+         <number>4</number>
+        </property>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
