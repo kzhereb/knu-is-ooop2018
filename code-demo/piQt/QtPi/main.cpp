@@ -5,8 +5,8 @@
 
 int main(int argc, char *argv[])
 {
-    AtanCalculator calc;
-    qDebug()<<calc.calculate(1e3);
+    TwoAtanCalculator calc(1,5,4,1,239,-1);
+    qDebug()<<calc.calculate(2);
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>808</width>
     <height>300</height>
    </rect>
   </property>
@@ -14,49 +14,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGroupBox" name="grbCalculators">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>211</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Calculators</string>
-    </property>
-    <widget class="QRadioButton" name="rbAtan">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>99</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Atan</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbIntegrate">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>99</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Integrate</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLabel" name="lblResult">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>580</x>
       <y>130</y>
       <width>131</width>
       <height>17</height>
@@ -66,10 +27,10 @@
      <string>Result</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>540</x>
       <y>20</y>
       <width>169</width>
       <height>48</height>
@@ -88,13 +49,23 @@
      </item>
     </layout>
    </widget>
+   <widget class="QListWidget" name="lswCalculators">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>808</width>
      <height>26</height>
     </rect>
    </property>
