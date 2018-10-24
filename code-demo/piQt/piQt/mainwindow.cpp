@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QDateTime>
+#include <QStringList>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -12,6 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->tblResults->setColumnWidth(0,150);
+    ui->tblResults->setHorizontalHeaderLabels(QStringList{
+                                                  "Time",
+                                                  "Name",
+                                                  "Steps",
+                                                  "Result"
+                                              });
 
     addCalculators();
 }
