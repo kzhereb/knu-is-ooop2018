@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include "picalculator.h"
+#include "models.h"
 
 #include <QMainWindow>
 #include <QHash>
-#include <QStandardItemModel>
+
 
 #include <memory>
 
@@ -35,7 +36,9 @@ private:
     shared_ptr<PiCalculator> calc;
     QHash<QString, shared_ptr<PiCalculator>> mapCalc;
 
-    QStandardItemModel * model;
+    shared_ptr<Models> models;
+
+
 
     void addCalculators();
     void calculate(QString name);
