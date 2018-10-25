@@ -28,12 +28,15 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     picalculator.cpp \
-    models.cpp
+    models.cpp \
+    picalculatorresultmodel.cpp
 
 HEADERS += \
         mainwindow.h \
     picalculator.h \
-    models.h
+    models.h \
+    picalculatorresultmodel.h \
+    picalculatorresult.h
 
 FORMS += \
         mainwindow.ui

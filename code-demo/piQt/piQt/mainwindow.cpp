@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    models = std::make_shared<Models>();
+    models = std::make_shared<CustomModels>();
 
 
 
