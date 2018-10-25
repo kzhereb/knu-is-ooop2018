@@ -103,7 +103,7 @@ void PiCalculatorResultModel::sort(int column, Qt::SortOrder order)
         break;
 
     }
-
+    emit dataChanged(index(0,0),index(results.size(),4));
 }
 
 //bool PiCalculatorResultModel::insertColumns(int column, int count, const QModelIndex &parent)
