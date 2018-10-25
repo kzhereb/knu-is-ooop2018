@@ -5,6 +5,7 @@
 
 #include <QMainWindow>
 #include <QHash>
+#include <QStandardItemModel>
 
 #include <memory>
 
@@ -33,6 +34,8 @@ private:
     Ui::MainWindow *ui;
     shared_ptr<PiCalculator> calc;
     QHash<QString, shared_ptr<PiCalculator>> mapCalc;
+
+    QStandardItemModel * model;
 
     void addCalculators();
     void calculate(QString name);

@@ -8,17 +8,22 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    model(new QStandardItemModel)
 {
     ui->setupUi(this);
 
     ui->tblResults->setColumnWidth(0,150);
-    ui->tblResults->setHorizontalHeaderLabels(QStringList{
-                                                  "Time",
-                                                  "Name",
-                                                  "Steps",
-                                                  "Result"
-                                              });
+
+    model->setColumnCount(4);
+    model->setHorizontalHeaderLabels(QStringList{
+                                                   "Time",
+                                                   "Name",
+                                                   "Steps",
+                                                   "Result"
+                                               });
+
+    ui->tblResults->setModel(model);
 
     addCalculators();
 }
@@ -67,25 +72,22 @@ void MainWindow::calculate(QString name)
 
 void MainWindow::addResultToTable(QString name, int steps, double result)
 {
-    ui->tblResults->setSortingEnabled(false);
-
     QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    int rowCount = ui->tblResults->rowCount();
-    ui->tblResults->setRowCount(rowCount+1);
+    int rowCount = model->rowCount();
+    model->setRowCount(rowCount+1);
 
-    QTableWidgetItem* itemDT = new QTableWidgetItem(time);
-    ui->tblResults->setItem(rowCount,0,itemDT);
+    QStandardItem* itemDT = new QStandardItem(time);
+    model->setItem(rowCount,0,itemDT);
 
-    QTableWidgetItem* itemName = new QTableWidgetItem(name);
-    ui->tblResults->setItem(rowCount,1,itemName);
+    QStandardItem* itemName = new QStandardItem(name);
+    model->setItem(rowCount,1,itemName);
 
-    QTableWidgetItem* itemSteps = new QTableWidgetItem(QString::number(steps));
-    ui->tblResults->setItem(rowCount,2,itemSteps);
+    QStandardItem* itemSteps = new QStandardItem(QString::number(steps));
+    model->setItem(rowCount,2,itemSteps);
 
-    QTableWidgetItem* itemResult = new QTableWidgetItem(QString::number(result));
-    ui->tblResults->setItem(rowCount,3,itemResult);
+    QStandardItem* itemResult = new QStandardItem(QString::number(result));
+    model->setItem(rowCount,3,itemResult);
 
-    ui->tblResults->setSortingEnabled(true);
 }
 
 void MainWindow::on_lswCalculators_currentTextChanged(const QString &currentText)
