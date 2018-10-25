@@ -90,6 +90,8 @@ void MainWindow::addResultToTable(QString name, int steps, double result)
     QStandardItem* itemResult = new QStandardItem(QString::number(result));
     model->setItem(rowCount,3,itemResult);
 
+    ui->tblResults->setSortingEnabled(true);
+
 }
 
 void MainWindow::on_lswCalculators_currentTextChanged(const QString &currentText)
