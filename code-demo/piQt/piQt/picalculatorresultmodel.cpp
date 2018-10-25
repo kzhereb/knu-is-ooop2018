@@ -76,6 +76,36 @@ bool PiCalculatorResultModel::insertRows(int row, int count, const QModelIndex &
     return true;
 }
 
+void PiCalculatorResultModel::sort(int column, Qt::SortOrder order)
+{
+    switch(column) {
+        case 0:
+            if (order==Qt::AscendingOrder) {
+                std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
+                return a.timestamp<b.timestamp;
+                });
+            } else {
+                std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
+                return a.timestamp>b.timestamp;
+                });
+            }
+            break;
+        case 1:
+        if (order==Qt::AscendingOrder) {
+            std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
+            return a.name<b.name;
+            });
+        } else {
+            std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
+            return a.name>b.name;
+            });
+        }
+        break;
+
+    }
+
+}
+
 //bool PiCalculatorResultModel::insertColumns(int column, int count, const QModelIndex &parent)
 //{
 //    beginInsertColumns(parent, column, column + count - 1);
