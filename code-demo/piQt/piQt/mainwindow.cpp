@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tblResults->setModel(model);
 
     ui->tblResults->setColumnWidth(0,150);
+    ui->tblResults->sortByColumn(0,Qt::SortOrder::AscendingOrder);
 
     addCalculators();
 }
