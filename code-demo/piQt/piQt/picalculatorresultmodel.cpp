@@ -27,7 +27,7 @@ int PiCalculatorResultModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return results.size();
+    return static_cast<int>(results.size());
 }
 
 int PiCalculatorResultModel::columnCount(const QModelIndex &parent) const
