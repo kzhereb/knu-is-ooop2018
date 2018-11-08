@@ -81,9 +81,10 @@ void PiCalculatorResultModel::sort(int column, Qt::SortOrder order)
     switch(column) {
         case 0:
             if (order==Qt::AscendingOrder) {
-                std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
-                return a.timestamp<b.timestamp;
-                });
+                std::sort(results.begin(),results.end(),
+                          [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
+                                return a.timestamp<b.timestamp;
+                             });
             } else {
                 std::sort(results.begin(),results.end(), [](const PiCalculatorResult& a, const PiCalculatorResult& b) {
                 return a.timestamp>b.timestamp;
