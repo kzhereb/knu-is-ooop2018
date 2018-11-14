@@ -10,6 +10,7 @@
 
 class AccessModifiersSUT {
 	friend class FriendlyClass;
+	friend int sum_of_all_fields(const AccessModifiersSUT & sut);
 private:
 	int private_field;
 protected:
@@ -44,10 +45,14 @@ public:
 
 class FriendlyClass {
 public:
-	int sum_of_all_fields(const AccessModifiersSUT & sut ) {
+	int sum_of_all_fields(const AccessModifiersSUT & sut) {
 		return sut.private_field + sut.protected_field + sut.public_field;
 	}
 
 };
+
+int sum_of_all_fields(const AccessModifiersSUT & sut ) {
+		return sut.private_field + sut.protected_field + sut.public_field;
+	}
 
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */

@@ -29,6 +29,10 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 		AccessModifiersSUT target {5,7,9};
 		FriendlyClass friendCl;
 		REQUIRE(friendCl.sum_of_all_fields(target) == 21);
+
+		SECTION("friend function also can access everything") {
+			REQUIRE(sum_of_all_fields(target) == 21);
+		}
 	}
 }
 
