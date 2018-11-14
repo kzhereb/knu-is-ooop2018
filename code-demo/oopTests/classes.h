@@ -11,10 +11,7 @@
 class AccessModifiersSUT {
 	friend class FriendlyClass;
 	friend int sum_of_all_fields(const AccessModifiersSUT & sut);
-private:
-	int private_field;
-protected:
-	int protected_field;
+
 public:
 	AccessModifiersSUT(int pub, int prot, int priv) :
 		public_field(pub), protected_field(prot), private_field(priv){
@@ -22,6 +19,10 @@ public:
 	}
 	AccessModifiersSUT():AccessModifiersSUT(0,0,0) {}
 	int public_field;
+protected:
+	int protected_field;
+private:
+	int private_field;
 };
 
 class Child: public AccessModifiersSUT {
