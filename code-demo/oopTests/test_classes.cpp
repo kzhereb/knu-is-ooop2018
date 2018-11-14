@@ -24,5 +24,11 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 		REQUIRE(child.public_field == 5);
 		REQUIRE(child.sum_of_fields() == 12);
 	}
+
+	SECTION("friend class has access to all members") {
+		AccessModifiersSUT target {5,7,9};
+		FriendlyClass friendCl;
+		REQUIRE(friendCl.sum_of_all_fields(target) == 21);
+	}
 }
 

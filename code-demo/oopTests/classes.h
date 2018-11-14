@@ -9,11 +9,17 @@
 #define CODE_DEMO_OOPTESTS_CLASSES_H_
 
 class AccessModifiersSUT {
+	friend class FriendlyClass;
 private:
 	int private_field;
 protected:
 	int protected_field;
 public:
+	AccessModifiersSUT(int pub, int prot, int priv) :
+		public_field(pub), protected_field(prot), private_field(priv){
+
+	}
+	AccessModifiersSUT():AccessModifiersSUT(0,0,0) {}
 	int public_field;
 };
 
@@ -32,6 +38,14 @@ public:
 	}
 	int sum_of_fields() {
 		return public_field + protected_field;
+	}
+
+};
+
+class FriendlyClass {
+public:
+	int sum_of_all_fields(const AccessModifiersSUT & sut ) {
+		return sut.private_field + sut.protected_field + sut.public_field;
 	}
 
 };
