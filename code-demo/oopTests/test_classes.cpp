@@ -61,5 +61,21 @@ TEST_CASE("static members", "[classes]") {
 	REQUIRE(target.static_sum(target) == 14);
 }
 
+TEST_CASE("const", "[classes]") {
+
+	REQUIRE(MyConst==12345);
+	// MyConst = 5;
+		// ERROR - cannot assign const
+	REQUIRE(*MyIntPointer==12345);
+	// *MyIntPointer = 5;
+		// ERROR - cannot change value of const pointer
+	const int newConst = 5;
+	MyIntPointer = &newConst;
+		// OK - can change the pointer to a different const
+	REQUIRE(*MyIntPointer==5);
+
+
+
+}
 
 

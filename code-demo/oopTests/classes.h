@@ -84,5 +84,8 @@ public:
 	}
 };
 
+const int MyConst = 12345;
+
+const int * MyIntPointer = &MyConst;
 
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */
