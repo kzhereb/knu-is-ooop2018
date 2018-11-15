@@ -32,4 +32,9 @@ template<typename T> struct type_holder {
 type_holder<int>::typed_pair_typedef pairIntTypedef;
 type_holder<std::string>::typed_pair_typedef pairStringTypedef;
 
+template<typename T> using typed_pair_using = std::pair<T,std::vector<T>>;
+typed_pair_using<int> pairIntUsing;
+typed_pair_using<std::string> pairStringUsing;
+
+
 #endif /* CODE_DEMO_OOPTESTS_LONG_TYPE_NAMES_H_ */

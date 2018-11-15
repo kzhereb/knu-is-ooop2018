@@ -46,6 +46,11 @@ TEST_CASE("using pair", "[long]") {
 		checkPairInt(pairIntTypedef);
 		checkPairString(pairStringTypedef);
 	}
+
+	SECTION("template+using int, string") {
+		checkPairInt(pairIntUsing);
+		checkPairString(pairStringUsing);
+	}
  }
 
 
