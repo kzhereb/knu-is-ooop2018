@@ -17,6 +17,11 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 	// target.private_field = 9;
 		// ERROR - access to private field outside class
 
+	SECTION("can access private fields from another instance of same class") {
+		AccessModifiersSUT another {5,7,9};
+		REQUIRE(target.sum_of_all_fields(another)== 21);
+	}
+
 	SECTION("child class has access to protected") {
 		Child child(5,7);
 		// child.protected_field = 77;
@@ -49,4 +54,5 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 		}
  	}
 }
+
 

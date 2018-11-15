@@ -20,6 +20,10 @@ public:
 	AccessModifiersSUT():AccessModifiersSUT(0,0,0) {}
 	int public_field;
 
+	int sum_of_all_fields(const AccessModifiersSUT & sut) {
+		return sut.private_field + sut.protected_field + sut.public_field;
+	}
+
 	int get_private_field() const {
 		return private_field;
 	}
@@ -63,5 +67,6 @@ public:
 int sum_of_all_fields(const AccessModifiersSUT & sut ) {
 		return sut.private_field + sut.protected_field + sut.public_field;
 	}
+
 
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */
