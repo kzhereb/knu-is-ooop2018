@@ -19,6 +19,14 @@ public:
 	}
 	AccessModifiersSUT():AccessModifiersSUT(0,0,0) {}
 	int public_field;
+
+	int get_private_field() const {
+		return private_field;
+	}
+
+	void set_private_field(int private_field_) {
+		private_field = private_field_;
+	}
 protected:
 	int protected_field;
 private:

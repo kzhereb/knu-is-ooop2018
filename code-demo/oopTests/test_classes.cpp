@@ -34,5 +34,19 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 			REQUIRE(sum_of_all_fields(target) == 21);
 		}
 	}
+
+	SECTION("use getter to access private fields") {
+		REQUIRE(target.get_private_field()==0);
+
+		SECTION("init values first") {
+			AccessModifiersSUT target2 {5,7,9};
+			REQUIRE(target2.get_private_field()==9);
+		}
+
+		SECTION("use setter to change private field") {
+			target.set_private_field(123);
+			REQUIRE(target.get_private_field()==123);
+		}
+ 	}
 }
 
