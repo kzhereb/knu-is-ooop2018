@@ -17,15 +17,27 @@ TEST_CASE("using pair", "[long]") {
 	REQUIRE(myPair.second[1] == "two");
 	REQUIRE(myPair.second[2] == "many");
 
-	SECTION("using typedef") {
-		secondPair.first = "test2";
-		secondPair.second = {"one","two", "many"};
+	SECTION("with typedef") {
+		pairTypedef.first = "test2";
+		pairTypedef.second = {"one","two", "many"};
 
-		REQUIRE(secondPair.first == "test2");
-		REQUIRE(secondPair.second[0] == "one");
-		REQUIRE(secondPair.second[1] == "two");
-		REQUIRE(secondPair.second[2] == "many");
+		REQUIRE(pairTypedef.first == "test2");
+		REQUIRE(pairTypedef.second[0] == "one");
+		REQUIRE(pairTypedef.second[1] == "two");
+		REQUIRE(pairTypedef.second[2] == "many");
 
 
 	}
+
+	SECTION("with using") {
+			pairUsing.first = "test2";
+			pairUsing.second = {"one","two", "many"};
+
+			REQUIRE(pairUsing.first == "test2");
+			REQUIRE(pairUsing.second[0] == "one");
+			REQUIRE(pairUsing.second[1] == "two");
+			REQUIRE(pairUsing.second[2] == "many");
+
+
+		}
  }
