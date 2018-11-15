@@ -8,36 +8,27 @@
 #include "long_type_names.h"
 #include "catch.hpp"
 
-TEST_CASE("using pair", "[long]") {
-	myPair.first = "test";
-	myPair.second = {"one","two", "many"};
+template <typename T> void checkPairString(T& pair) {
+	pair.first = "test";
+	pair.second = {"one","two", "many"};
 
-	REQUIRE(myPair.first == "test");
-	REQUIRE(myPair.second[0] == "one");
-	REQUIRE(myPair.second[1] == "two");
-	REQUIRE(myPair.second[2] == "many");
+	REQUIRE(pair.first == "test");
+	REQUIRE(pair.second[0] == "one");
+	REQUIRE(pair.second[1] == "two");
+	REQUIRE(pair.second[2] == "many");
+}
+
+TEST_CASE("using pair", "[long]") {
+
+	SECTION("long type") {
+		checkPairString(myPair);
+	}
 
 	SECTION("with typedef") {
-		pairTypedef.first = "test2";
-		pairTypedef.second = {"one","two", "many"};
-
-		REQUIRE(pairTypedef.first == "test2");
-		REQUIRE(pairTypedef.second[0] == "one");
-		REQUIRE(pairTypedef.second[1] == "two");
-		REQUIRE(pairTypedef.second[2] == "many");
-
-
+		checkPairString(pairTypedef);
 	}
 
 	SECTION("with using") {
-			pairUsing.first = "test2";
-			pairUsing.second = {"one","two", "many"};
-
-			REQUIRE(pairUsing.first == "test2");
-			REQUIRE(pairUsing.second[0] == "one");
-			REQUIRE(pairUsing.second[1] == "two");
-			REQUIRE(pairUsing.second[2] == "many");
-
-
-		}
+		checkPairString(pairUsing);
+	}
  }
