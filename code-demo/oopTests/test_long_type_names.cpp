@@ -18,6 +18,16 @@ template <typename T> void checkPairString(T& pair) {
 	REQUIRE(pair.second[2] == "many");
 }
 
+template <typename T> void checkPairInt(T& pair) {
+	pair.first = 5;
+	pair.second = {7, 11, 13};
+
+	REQUIRE(pair.first == 5);
+	REQUIRE(pair.second[0] == 7);
+	REQUIRE(pair.second[1] == 11);
+	REQUIRE(pair.second[2] == 13);
+}
+
 TEST_CASE("using pair", "[long]") {
 
 	SECTION("long type") {
@@ -31,4 +41,11 @@ TEST_CASE("using pair", "[long]") {
 	SECTION("with using") {
 		checkPairString(pairUsing);
 	}
+
+	SECTION("template+typedef int, string") {
+		checkPairInt(pairIntTypedef);
+		checkPairString(pairStringTypedef);
+	}
  }
+
+
