@@ -55,4 +55,11 @@ TEST_CASE("access modifiers for classes", "[classes]") {
  	}
 }
 
+TEST_CASE("static members", "[classes]") {
+	Static target {9,5};
+	REQUIRE(Static::static_sum(target) == 14);
+	REQUIRE(target.static_sum(target) == 14);
+}
+
+
 

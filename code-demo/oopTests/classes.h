@@ -69,4 +69,20 @@ int sum_of_all_fields(const AccessModifiersSUT & sut ) {
 	}
 
 
+class Static {
+private:
+	int private_field;
+	static int static_private_field;
+public:
+	int public_field;
+	Static(int priv, int pub) :
+		private_field(priv), public_field(pub){
+	}
+	static int static_sum(const Static & sut) {
+		return sut.private_field + sut.public_field;
+			// OK - static methods can access private fields from same class argument
+	}
+};
+
+
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */
