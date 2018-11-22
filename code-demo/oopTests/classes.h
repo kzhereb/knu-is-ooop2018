@@ -92,6 +92,6 @@ const int * MyIntPointer = &MyConst;
 
 int * const MyIntPointerConst = &MyInt;
 
-//const int * const MyIntPointerConst = &MyConst;
+int const * const MyIntPointerConstConst = &MyConst;
 
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */

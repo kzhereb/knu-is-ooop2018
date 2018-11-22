@@ -78,11 +78,14 @@ TEST_CASE("const", "[classes]") {
 	*MyIntPointerConst = 5;
 	REQUIRE(*MyIntPointerConst==5);
 
-	int newConst2 = 10;
+
 	// MyIntPointerConst = &newConst2;
 		// ERROR - cannot change the pointer to a different const
 	//REQUIRE(*MyIntPointerConst==10);
 
+	REQUIRE(*MyIntPointerConstConst==12345);
+	//*MyIntPointerConstConst = 5;
+	// MyIntPointerConstConst = &newConst;
 
 
 }
