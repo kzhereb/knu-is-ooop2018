@@ -86,6 +86,12 @@ public:
 
 const int MyConst = 12345;
 
+int MyInt = 123;
+
 const int * MyIntPointer = &MyConst;
+
+int * const MyIntPointerConst = &MyInt;
+
+//const int * const MyIntPointerConst = &MyConst;
 
 #endif /* CODE_DEMO_OOPTESTS_CLASSES_H_ */
