@@ -20,7 +20,7 @@ public:
 	AccessModifiersSUT():AccessModifiersSUT(0,0,0) {}
 	int public_field;
 
-	int sum_of_all_fields(const AccessModifiersSUT & sut) {
+	int sum_of_all_fields(const AccessModifiersSUT & sut) const {
 		return sut.private_field + sut.protected_field + sut.public_field;
 	}
 
@@ -30,6 +30,10 @@ public:
 
 	void set_private_field(int private_field_) {
 		private_field = private_field_;
+	}
+
+	void set_another_private_field(AccessModifiersSUT & sut, int private_field_) const {
+		sut.private_field = private_field_;
 	}
 protected:
 	int protected_field;
@@ -50,7 +54,7 @@ public:
 		// private_field = 0;
 			// ERROR - subclass cannot access private members of base class
 	}
-	int sum_of_fields() {
+	int sum_of_fields() const {
 		return public_field + protected_field;
 	}
 
@@ -58,7 +62,7 @@ public:
 
 class FriendlyClass {
 public:
-	int sum_of_all_fields(const AccessModifiersSUT & sut) {
+	int sum_of_all_fields(const AccessModifiersSUT & sut) const {
 		return sut.private_field + sut.protected_field + sut.public_field;
 	}
 
@@ -67,6 +71,7 @@ public:
 int sum_of_all_fields(const AccessModifiersSUT & sut ) {
 		return sut.private_field + sut.protected_field + sut.public_field;
 	}
+//cannot use const here - non-member function
 
 
 class Static {
@@ -82,6 +87,7 @@ public:
 		return sut.private_field + sut.public_field;
 			// OK - static methods can access private fields from same class argument
 	}
+	//cannot use const here - static method
 };
 
 const int MyConst = 12345;

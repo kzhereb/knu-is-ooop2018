@@ -53,6 +53,13 @@ TEST_CASE("access modifiers for classes", "[classes]") {
 			REQUIRE(target.get_private_field()==123);
 		}
  	}
+
+	SECTION("setter on another instance of same class") {
+		AccessModifiersSUT target2 {5,7,9};
+		REQUIRE(target2.get_private_field()==9);
+		target.set_another_private_field(target2, 123);
+		REQUIRE(target2.get_private_field()==123);
+	}
 }
 
 TEST_CASE("static members", "[classes]") {
@@ -86,6 +93,8 @@ TEST_CASE("const", "[classes]") {
 	REQUIRE(*MyIntPointerConstConst==12345);
 	//*MyIntPointerConstConst = 5;
 	// MyIntPointerConstConst = &newConst;
+
+
 
 
 }
