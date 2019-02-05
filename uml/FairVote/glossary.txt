@@ -1,0 +1,10 @@
+Voting process
+Candidates
+Ballot questions
+Voting Outcome
+Voting Parameters: time limit, ...
+Endless Vote: no time limit
+Voter User
+Administrator User
+Person Verification System
+
