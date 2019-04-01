@@ -6,4 +6,13 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  tst_calculustest.cpp
+SOURCES +=  tst_calculustest.cpp \
+    ../app/function.cpp \
+    ../app/functionbuilder.cpp
+
+HEADERS += \
+    ../app/function.h \
+    ../app/functionbuilder.h
+
+INCLUDEPATH +=\
+    ../app
