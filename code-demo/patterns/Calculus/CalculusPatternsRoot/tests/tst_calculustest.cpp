@@ -2,6 +2,7 @@
 
 #include "../app/functionbuilder.h"
 #include "../app/function.h"
+#include "../app/differentiate.h"
 
 // add necessary includes here
 
@@ -16,6 +17,7 @@ public:
 private slots:
     void test_function_builder();
     void test_constant_variable();
+    void test_differentiate();
 
 };
 
@@ -68,6 +70,28 @@ void CalculusTest::test_constant_variable()
     QVERIFY(! xplus1->is_variable());
     QVERIFY(! xplus1->is_constant());
 
+
+}
+
+void CalculusTest::test_differentiate()
+{
+    FunctionBuilder builder;
+
+    Function * x = builder.create_simple("x");
+
+    builder.start_build("1");
+    Function * one = builder.get_result();
+
+
+    builder.start_build("plus");
+    builder.add_operand(*x);
+    builder.add_operand(*one);
+    Function * xplus1 = builder.get_result();
+
+    Differentiate diff;
+
+    Function* der = diff.get_derivative(xplus1,"x");
+    QCOMPARE(der->str().c_str(),"plus(1, 0)");
 
 }
 

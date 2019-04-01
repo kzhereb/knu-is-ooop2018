@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     function.cpp \
-    functionbuilder.cpp
+    functionbuilder.cpp \
+    differentiate.cpp
 
 HEADERS += \
         mainwindow.h \
     function.h \
-    functionbuilder.h
+    functionbuilder.h \
+    differentiate.h
 
 FORMS += \
         mainwindow.ui

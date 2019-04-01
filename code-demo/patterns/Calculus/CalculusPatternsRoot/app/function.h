@@ -7,14 +7,16 @@ class Function
 {
     friend class FunctionBuilder;
 protected:
-    std::string name;
+    std::string _name;
     int arity;
     std::vector<Function> operands;
 public:
-    Function(std::string name):name(name),arity(0){}
-    std::string str();
-    bool is_constant();
-    bool is_variable();
+    Function(std::string name):_name(name),arity(0){}
+    std::string str() const;
+    std::string name() const;
+    Function const * operand(int i) const;
+    bool is_constant() const;
+    bool is_variable() const;
 
 };
 
