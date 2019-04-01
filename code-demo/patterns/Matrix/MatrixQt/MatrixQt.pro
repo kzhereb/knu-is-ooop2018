@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     matrix.cpp \
-    matrixfactory.cpp
+    matrixfactory.cpp \
+    matrix_exceptions.cpp
 
 HEADERS += \
         mainwindow.h \
     matrix.h \
-    matrixfactory.h
+    matrixfactory.h \
+    matrix_exceptions.h
 
 FORMS += \
         mainwindow.ui
