@@ -50,8 +50,8 @@ void CalculusTest::test_function_builder()
 void CalculusTest::test_constant_variable()
 {
     FunctionBuilder builder;
-    builder.start_build("x");
-    Function * x = builder.get_result();
+
+    Function * x = builder.create_simple("x");
     QVERIFY(x->is_variable());
     QVERIFY(! x->is_constant());
 

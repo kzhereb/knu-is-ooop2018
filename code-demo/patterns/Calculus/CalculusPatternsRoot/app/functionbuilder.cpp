@@ -20,3 +20,9 @@ Function *FunctionBuilder::get_result()
 {
     return result;
 }
+
+Function *FunctionBuilder::create_simple(std::string name)
+{
+    start_build(name);
+    return get_result();
+}

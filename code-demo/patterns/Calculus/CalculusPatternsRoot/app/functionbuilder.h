@@ -14,6 +14,7 @@ public:
     void start_build(std::string name);
     void add_operand(const Function& operand);
     Function* get_result();
+    Function* create_simple(std::string name);
 };
 
 #endif // FUNCTIONBUILDER_H
