@@ -13,6 +13,9 @@ protected:
 public:
     Function(std::string name):name(name),arity(0){}
     std::string str();
+    bool is_constant();
+    bool is_variable();
+
 };
 
 #endif // FUNCTION_H
