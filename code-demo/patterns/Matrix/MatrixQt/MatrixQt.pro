@@ -29,13 +29,16 @@ SOURCES += \
         mainwindow.cpp \
     matrix.cpp \
     matrixfactory.cpp \
-    matrix_exceptions.cpp
+    matrix_exceptions.cpp \
+    matrixmultiplicationalgorithm.cpp
 
 HEADERS += \
         mainwindow.h \
     matrix.h \
     matrixfactory.h \
-    matrix_exceptions.h
+    matrix_exceptions.h \
+    matrixmultiplicationalgorithm.h \
+    matrixmultiplyimplementation.h
 
 FORMS += \
         mainwindow.ui
