@@ -24,6 +24,8 @@ void check_multiply() {
     Matrix1DFactory<int> factory;
     Matrix<int>* matr1 = factory.createMatrix(2,3);
     Matrix<int>* matr2 = factory.createMatrix(3,4);
+    matr1->set(0,0,3);
+    matr2->set(0,0,5);
 
     Matrix<int>* result = (*matr1) * (*matr2);
     qDebug()<<result->get(0,0);

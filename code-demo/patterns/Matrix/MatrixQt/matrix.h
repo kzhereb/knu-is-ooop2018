@@ -6,10 +6,9 @@
 template< typename T>
 class Matrix
 {
-    friend class MatrixMultiplicationAlgorithm<T>;
 protected:
-    int rows;
-    int columns;
+    int _rows;
+    int _columns;
     MatrixMultiplicationAlgorithm<T> * multiply_algorithm;
 public:
     Matrix(int rows, int columns);
@@ -18,12 +17,15 @@ public:
     virtual Matrix<T>* createMatrix(int rows, int columns) const = 0;
     Matrix<T>* operator*(const Matrix<T>& other);
 
+    int rows() const { return _rows;}
+    int columns() const { return _columns;}
+
 };
 
 #include "matrixmultiplyimplementation.h"
 
 template<typename T>
-Matrix<T>::Matrix(int rows, int columns):rows(rows),columns(columns){
+Matrix<T>::Matrix(int rows, int columns):_rows(rows),_columns(columns){
     multiply_algorithm = new SimpleMultiplication<T>;
 }
 
@@ -80,10 +82,10 @@ public:
         arr = new T [rows*columns];
     }
     T get(int row, int col) const override {
-        return arr[row*this->columns+col];
+        return arr[row*this->columns()+col];
     }
     void set(int row, int col, T val) override {
-        arr[row*this->columns+col] = val;
+        arr[row*this->columns()+col] = val;
     }
     Matrix1D<T>* createMatrix(int rows, int columns) const override {
         return new Matrix1D<T>(rows, columns);

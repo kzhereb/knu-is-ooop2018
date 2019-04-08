@@ -1,6 +1,6 @@
 #include "matrixmultiplicationalgorithm.h"
 
-MatrixMultiplicationAlgorithm::MatrixMultiplicationAlgorithm()
-{
+//MatrixMultiplicationAlgorithm::MatrixMultiplicationAlgorithm()
+//{
 
-}
+//}

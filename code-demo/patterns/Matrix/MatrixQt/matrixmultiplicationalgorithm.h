@@ -10,7 +10,7 @@ template< typename T>
 class MatrixMultiplicationAlgorithm
 {
 public:
-    MatrixMultiplicationAlgorithm();
+    MatrixMultiplicationAlgorithm() =default;
     virtual Matrix<T>* multiply(const Matrix<T>* left, const Matrix<T>* right) const =0;
 };
 
